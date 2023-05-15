@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class Controller extends BaseController
 {
     public function index() {
-        $trains = Train::all();
+        $trains = Train::where("departure_time", ">=", date("Y-m-d"))->get();
         return view("home", compact("trains"));
     }
 }
